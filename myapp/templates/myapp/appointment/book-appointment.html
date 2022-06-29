@@ -1,0 +1,524 @@
+﻿{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="https://thememakker.com/templates/oreo/hospital/laravel/public/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <title>Book Appointment</title>
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">
+                
+                
+                    <link rel="stylesheet" href="{% static 'myapp\assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+                                <link rel="stylesheet" href="{% static 'myapp\assets\plugins\bootstrap-material-datetimepicker\css\bootstrap-material-datetimepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp\assets\plugins\bootstrap-select\css\bootstrap-select.css' %}">
+                <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'myapp\assets\css\main.css' %}">
+                <link rel="stylesheet" href="{% static 'myapp\assets\css\color_skins.css' %}">
+            </head>
+        <body class="theme-cyan">
+        <!-- Page Loader -->
+        <div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="m-t-30"><img class="zmdi-hc-spin" src="{% static 'myapp\assets\images\logo.svg' %}" width="48" height="48" alt="Oreo"></div>
+                <p>Please wait...</p>        
+            </div>
+        </div>
+        <!-- Overlay For Sidebars -->
+        <div class="overlay"></div>
+        <nav class="navbar p-l-5 p-r-5">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="{% url 'indexpatient' %}"><img src="{% static 'myapp\assets\images\logo.svg' %}" width="30" alt="Oreo"><span class="m-l-10">Oreo</span></a>
+            </div>
+        </li>
+        <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
+            <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+            </a>
+            <ul class="dropdown-menu pullDown">
+                <li class="body">
+                    <ul class="menu list-unstyled">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'myapp\assets\images\xs\avatar2.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Sophia <span class="time">30min ago</span></span>
+                                        <span class="message">There are many variations of passages</span>                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'myapp\assets\images\xs\avatar3.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Sophia <span class="time">31min ago</span></span>
+                                        <span class="message">There are many variations of passages of Lorem Ipsum</span>                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'myapp\assets\images\xs\avatar4.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Isabella <span class="time">35min ago</span></span>
+                                        <span class="message">There are many variations of passages</span>                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'myapp\assets\images\xs\avatar5.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Alexander <span class="time">35min ago</span></span>
+                                        <span class="message">Contrary to popular belief, Lorem Ipsum random</span>                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'myapp\assets\images\xs\avatar6.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Grayson <span class="time">1hr ago</span></span>
+                                        <span class="message">There are many variations of passages</span>                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </li>                        
+                    </ul>
+                </li>
+                <li class="footer"> <a href="javascript:void(0);">View All</a> </li>
+            </ul>
+        </li>
+        <li class="float-right">
+            {% if uid %}
+            <div>
+                Welcome, {{request.session.username}} / 
+                <a href="{% url 'logout' %}" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+            </div>
+            {% else %}
+            <div>
+                <a href="{% url 'register' %}">Register</a> / 
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+            {% endif %}
+            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
+        </li>
+    </ul>
+</nav>        
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="{% url 'indexpatient' %}"><i class="zmdi zmdi-home m-r-5"></i>Oreo</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="{% url 'myprofile' %}">Patient</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane stretchRight active" id="dashboard">
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <div class="user-info">
+                            <div class="image"><a href="{% url 'myprofile' %}"><img src="{{uid.profilepic.url}}" alt="User" ></a></div>
+                            <div class="detail">
+                                <h4>{{request.session.username}}</h4>
+                                <small>{{request.session.role}}</small> 
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class=""><a href="{% url 'indexpatient' %}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>            
+                    <li class="active open">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>Appointments</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'bookappointment' %}">Book Appointment</a></li>
+                            <li class=""><a href="{% url 'myappointments' %}">My Appointments</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>Doctors</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'doctorsfp' %}">All Doctors</a></li>
+                            <li class=""><a href="{% url 'eventsfp' %}">Doctor Schedule</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-balance-wallet"></i><span>Payments</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'invoicefp' %}">Invoice</a></li>
+                        </ul>
+                    </li>
+
+                    <!--
+                    <li class="header">EXTRA COMPONENTS</li>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-swap-alt"></i><span>User Interface (UI)</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="..\ui\ui-kit.html">UI KIT</a></li>
+                            <li class=""><a href="..\ui\alerts.html">Alerts</a></li>
+                            <li class=""><a href="..\ui\collapse.html">Collapse</a></li>
+                            <li class=""><a href="..\ui\colors.html">Colors</a></li>
+                            <li class=""><a href="..\ui\dialogs.html">Dialogs</a></li>
+                            <li class=""><a href="..\ui\icons.html">Icons</a></li>
+                            <li class=""><a href="..\ui\list-group.html">List Group</a></li>
+                            <li class=""><a href="..\ui\media-object.html">Media Object</a></li>
+                            <li class=""><a href="..\ui\modals.html">Modals</a></li>
+                            <li class=""><a href="..\ui\notifications.html">Notifications</a></li>
+                            <li class=""><a href="..\ui\progressbars.html">Progress Bars</a></li>
+                            <li class=""><a href="..\ui\range-sliders.html">Range Sliders</a></li>
+                            <li class=""><a href="..\ui\sortable-nestable.html">Sortable Nestable</a></li>
+                            <li class=""><a href="..\ui\tabs.html">Tabs</a></li>
+                            <li class=""><a href="..\ui\waves.html">Waves</a></li>
+                        </ul>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane stretchLeft" id="user">
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <div class="user-info m-b-20 p-b-15">
+                            <div class="image"><a href="{% url 'myprofile' %}"><img src="{{uid.profilepic.url}}" alt="User" ></a></div>
+                            <div class="detail">
+                                <h4>{{request.session.username}}</h4>
+                                <small>{{request.session.role}}</small> 
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <a title="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a>
+                                    <a title="twitter" href="#"><i class="zmdi zmdi-twitter"></i></a>
+                                    <a title="instagram" href="#"><i class="zmdi zmdi-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <small class="text-muted">Location: </small>
+                        <p>Los Angeles, CA </p>
+                        <hr>
+                        <small class="text-muted">Email address: </small>
+                        <p>{{uid.email}}</p>
+                        <hr>
+                        <small class="text-muted">Phone: </small>
+                        <p>{{uid.contactno}}</p>
+                        <hr>
+                    </li>                    
+                </ul>
+            </div>
+        </div>
+    </div>    
+</aside>        <!-- Right Sidebar -->
+        <aside id="rightsidebar" class="right-sidebar">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#setting"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane slideRight active" id="setting">
+                    <div class="slim_scroll">
+                        <div class="card">
+                            <h6>General Settings</h6>
+                            <ul class="setting-list list-unstyled">
+                                <li>
+                                    <div class="checkbox">
+                                        <input id="checkbox1" type="checkbox">
+                                        <label for="checkbox1">Report Panel Usage</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkbox">
+                                        <input id="checkbox2" type="checkbox" checked="">
+                                        <label for="checkbox2">Email Redirect</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkbox">
+                                        <input id="checkbox3" type="checkbox" checked="">
+                                        <label for="checkbox3">Notifications</label>
+                                    </div>                        
+                                </li>
+                                <li>
+                                    <div class="checkbox">
+                                        <input id="checkbox4" type="checkbox" checked="">
+                                        <label for="checkbox4">Auto Updates</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>                
+                        <div class="card">
+                            <h6>Skins</h6>
+                            <ul class="choose-skin list-unstyled">
+                                <li data-theme="purple">
+                                    <div class="purple"></div>
+                                </li>                   
+                                <li data-theme="blue">
+                                    <div class="blue"></div>
+                                </li>
+                                <li data-theme="cyan" class="active">
+                                    <div class="cyan"></div>                    
+                                </li>
+                                <li data-theme="green">
+                                    <div class="green"></div>
+                                </li>
+                                <li data-theme="orange">
+                                    <div class="orange"></div>
+                                </li>
+                                <li data-theme="blush">
+                                    <div class="blush"></div>                    
+                                </li>
+                            </ul>                    
+                        </div>
+                        <div class="card">
+                            <h6>Account Settings</h6>
+                            <ul class="setting-list list-unstyled">
+                                <li>
+                                    <div class="checkbox">
+                                        <input id="checkbox5" type="checkbox" checked="">
+                                        <label for="checkbox5">Offline</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkbox">
+                                        <input id="checkbox6" type="checkbox" checked="">
+                                        <label for="checkbox6">Location Permission</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card theme-light-dark">
+                            <h6>Left Menu</h6>
+                            <button class="t-light btn btn-default btn-simple btn-round btn-block">Light</button>
+                            <button class="t-dark btn btn-default btn-round btn-block">Dark</button>
+                            <button class="m_img_btn btn btn-primary btn-round btn-block">Sidebar Image</button>                    
+                        </div>                
+                    </div>                
+                </div>       
+            </div>
+        </aside>
+        
+<!-- Chat-launcher -->
+<div class="chat-launcher"></div>
+<div class="chat-wrapper">
+    <div class="card">
+        <div class="header">
+            <ul class="list-unstyled team-info margin-0">
+                <li class="m-r-15"><h2>Dr. Team</h2></li>
+                <li>
+                    <img src="{% static 'myapp\assets\images\xs\avatar2.jpg' %}" alt="Avatar">
+                </li>
+                <li>
+                    <img src="{% static 'myapp\assets\images\xs\avatar3.jpg' %}" alt="Avatar">
+                </li>
+                <li>
+                    <img src="{% static 'myapp\assets\images\xs\avatar4.jpg' %}" alt="Avatar">
+                </li>
+                <li>
+                    <img src="{% static 'myapp\assets\images\xs\avatar6.jpg' %}" alt="Avatar">
+                </li>
+                <li>
+                    <a href="javascript:void(0);" title="Add Member"><i class="zmdi zmdi-plus-circle"></i></a>
+                </li>
+            </ul>                       
+        </div>
+        <div class="body">
+            <div class="chat-widget">
+            <ul class="chat-scroll-list clearfix">
+                <li class="left float-left">
+                    <img src="{% static 'myapp\assets\images\xs\avatar3.jpg' %}" class="rounded-circle" alt="">
+                    <div class="chat-info">
+                        <a class="name" href="#">Alexander</a>
+                        <span class="datetime">6:12</span>                            
+                        <span class="message">Hello, John </span>
+                    </div>
+                </li>
+                <li class="right">
+                    <div class="chat-info"><span class="datetime">6:15</span> <span class="message">Hi, Alexander<br> How are you!</span> </div>
+                </li>
+                <li class="right">
+                    <div class="chat-info"><span class="datetime">6:16</span> <span class="message">There are many variations of passages of Lorem Ipsum available</span> </div>
+                </li>
+                <li class="left float-left"> <img src="{% static 'myapp\assets\images\xs\avatar2.jpg' %}" class="rounded-circle" alt="">
+                    <div class="chat-info"> <a class="name" href="#">Elizabeth</a> <span class="datetime">6:25</span> <span class="message">Hi, Alexander,<br> John <br> What are you doing?</span> </div>
+                </li>
+                <li class="left float-left"> <img src="{% static 'myapp\assets\images\xs\avatar1.jpg' %}" class="rounded-circle" alt="">
+                    <div class="chat-info"> <a class="name" href="#">Michael</a> <span class="datetime">6:28</span> <span class="message">I would love to join the team.</span> </div>
+                </li>
+                    <li class="right">
+                    <div class="chat-info"><span class="datetime">7:02</span> <span class="message">Hello, <br>Michael</span> </div>
+                </li>
+            </ul>
+            </div>
+            <div class="input-group p-t-15">
+                <input type="text" class="form-control" placeholder="Enter text here...">
+                <span class="input-group-addon">
+                    <i class="zmdi zmdi-mail-send"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+        <section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Book Appointment <small class="text-muted">Welcome to Oreo</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'indexpatient' %}"><i class="zmdi zmdi-home"></i> Oreo</a></li>
+                                                            <li class="breadcrumb-item">Appointment</li>
+                                                                                        <li class="breadcrumb-item active">Book Appointment</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+<div class="row clearfix">
+
+
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="header">
+                <h2><strong>Book</strong> Appointment<small>Please enter all information regarding your appointment.</small> </h2>
+                {% if e_msg %}
+                <div class="alert alert-danger" role="alert">
+                    {{e_msg}}
+                </div>
+                {% endif %}
+        
+                <ul class="header-dropdown">                            
+                    <li class="remove">
+                        <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <form action="{% url 'askappointment' %}" method="POST">
+                    {% csrf_token %}
+                <div class="row clearfix">
+                    <input type="hidden" name="id" value="{{uid.id}}">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" name="fname" class="form-control" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" name="lname" class="form-control" placeholder="Last Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <input type="text" name="dob" class="form-control" placeholder="Date of Birth">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <select class="form-control show-tick" name="gender">
+                            <option value="">- Gender -</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <select class="form-control show-tick" name="service">
+                            <option value="">- Service -</option>
+                            <option>Select Service</option>
+                            <option>Dental Checkup</option>
+                            <option>Full Body Checkup</option>
+                            <option>ENT Checkup</option>
+                            <option>Heart Checkup</option>
+                        </select>                                
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-calendar"></i>
+                            </span>
+                            <input type="text" name="date" class="form-control datetimepicker" placeholder="Please choose date & time...">
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="text" name="email" class="form-control" placeholder="Enter Your Email">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="text" name="phoneno" class="form-control" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <textarea name="message" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <button type="submit" value="submit" class="btn btn-primary btn-round">Submit</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </section>
+                <!-- Scripts -->
+                <script src="{% static 'myapp\assets\bundles\libscripts.bundle.js' %}"></script>    
+        <script src="{% static 'myapp\assets\bundles\vendorscripts.bundle.js' %}"></script>
+
+        <script src="{% static 'myapp\assets\bundles\mainscripts.bundle.js' %}"></script>
+                                <script src="{% static 'myapp\assets\plugins\momentjs\moment.js' %}"></script>
+    <script src="{% static 'myapp\assets\plugins\bootstrap-material-datetimepicker\js\bootstrap-material-datetimepicker.js' %}"></script>
+    <script>    $.fn.selectpicker.Constructor.DEFAULTS.iconBase = 'zmdi';
+    $.fn.selectpicker.Constructor.DEFAULTS.tickIcon = 'zmdi-check';</script>
+    <script>
+        $(function () {
+        //Datetimepicker plugin
+        $('.datetimepicker').bootstrapMaterialDatePicker({
+            format: 'dddd DD MMMM YYYY - HH:mm',
+            clearButton: true,
+            weekStart: 1
+        });
+    });
+    </script>
+				<!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+    </body>
+</html>
